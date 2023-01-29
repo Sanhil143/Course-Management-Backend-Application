@@ -1,0 +1,18 @@
+{
+  "name": "course-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "Sanhil Rai",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0"
+  }
+}
