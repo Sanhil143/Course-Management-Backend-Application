@@ -13,7 +13,7 @@ const role = async (req,res) => {
 const signUp = async (req, res) => {
       try {
             let data = req.body
-            password = cryptoJs.AES.encrypt(req.body.password, "Sanhil").toString()
+            password = cryptoJs.AES.encrypt(req.body.password,process.env.PASS_KEY).toString()
             data.password = password
             let savedData = await UserModel.create(data)
             return res.status(201).send({status:true, message:savedData})
@@ -31,14 +31,14 @@ const signIn = async (req,res) => {
                   return res.status(400).send({status:false, message:"Wrong email"})
             }
             
-            const hashedPass = cryptoJs.AES.decrypt(verifyUser.password, "Sanhil")
+            const hashedPass = cryptoJs.AES.decrypt(verifyUser.password,process.env.PASS_KEY)
             const mainPass = hashedPass.toString(cryptoJs.enc.Utf8)
 
             if(mainPass != user.password){
                   return res.status(400).send({status:false, message:"Wrong password"})
             }
             //json coming on picture
-            let token = jwt.sign({id:verifyUser._id}, "Sanhil",{expiresIn:"1d"})
+            let token = jwt.sign({id:verifyUser._id},process.env.SECU_KEY,{expiresIn:"1d"})
 
             const {password,__v,...others} = verifyUser._doc
 

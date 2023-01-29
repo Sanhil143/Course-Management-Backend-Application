@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
             if (!token) {
                   return res.status(401).send({ status: false, message: "Token is missing!" })
             }
-            jwt.verify(token, "Sanhil", (err, decode) => {
+            jwt.verify(token,process.env.SECU_KEY, (err, decode) => {
                   if (err) {
                         return res.status(403).send({ status: false, message: "You are not authorize" })
                   }
