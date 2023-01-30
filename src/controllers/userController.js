@@ -38,7 +38,7 @@ const signIn = async (req,res) => {
                   return res.status(400).send({status:false, message:"Wrong password"})
             }
             //json coming on picture
-            let token = jwt.sign({id:verifyUser._id},process.env.SECU_KEY,{expiresIn:"1d"})
+            let token = jwt.sign({id:verifyUser._id},process.env.SECU_KEY,{expiresIn:"100000"})
 
             const {password,__v,...others} = verifyUser._doc
 

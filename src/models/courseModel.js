@@ -11,10 +11,13 @@ const courseSchema = new mongoose.Schema({
       topics: [String],
       duration: String,
       category: String,
-      isDeleted:{
-            type:Boolean,
-            default:false
-      }
+      isDeleted: {
+            type: Boolean,
+            default: false
+      },
+      pdfs: String,
+      videos: String,
+      quizzes: String,
 
 },
       { timestamps: true })
